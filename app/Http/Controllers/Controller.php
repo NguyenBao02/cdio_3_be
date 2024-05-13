@@ -20,4 +20,13 @@ class Controller extends BaseController
         }
         return false;
     }
+    public function isUserKhachHang()
+    {
+        $user = auth()->user();
+
+        if ($user instanceof \App\Models\KhachHangController) {
+            return $user;
+        }
+        return false;
+    }
 }
