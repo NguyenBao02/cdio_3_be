@@ -2,64 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaiLy;
+use App\Models\NhapKhoSanPham;
 use App\Models\SanPham;
+use Exception;
 use Illuminate\Http\Request;
 
 class SanPhamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $admin = auth()->user();
+
+        try {
+            SanPham::create([
+                'tieu_de'           => $request->tieu_de,
+                'thumbnail'         => $request->thumbnail,
+                'slug_san_pham'     => $request->slug_san_pham,
+                'gia_ban'           => $request->gia_ban,
+                'gia_khuyen_mai'    => $request->gia_khuyen_mai,
+                'mo_ta'             => $request->mo_ta,
+                'id_dai_ly'         => $request->id_dai_ly,
+                'id_danh_muc'       => $request->id_danh_muc,
+            ]);
+
+            NhapKhoSanPham::create([
+                'ten_san_pham'      => $request->tieu_de,
+                'id_admin'          => $admin->id,
+            ]);
+
+            return response()->json([
+                'status'    => 1,
+                'id'        => $admin->id,
+                'message'   => 'Nhập Kho Thành Công'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Lỗi!!!!!!!!!'
+            ]);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(SanPham $sanPham)
+    public function dataSanPham()
     {
-        //
-    }
+        $data = SanPham::get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SanPham $sanPham)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, SanPham $sanPham)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SanPham $sanPham)
-    {
-        //
+        if ($data) {
+            return response()->json([
+                'status'    =>   true,
+                'data'      =>   $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>   false,
+                'message'   =>   'Trang Này Chưa Có Dữ Liệu',
+            ]);
+        }
     }
 }

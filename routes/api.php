@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DaiLyController;
 use App\Http\Controllers\DanhmucController;
+use App\Http\Controllers\NhapKhoSanPhamController;
+use App\Http\Controllers\SanPhamController;
+use App\Models\NhapKhoSanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +17,6 @@ Route::get('/admin/danh-muc/get-data', [DanhmucController::class, 'getData']);
 Route::post('/admin/danh-muc/delete-data', [DanhmucController::class, 'destroy']);
 Route::post('/admin/danh-muc/update-data', [DanhmucController::class, 'update']);
 
-
 //admin
 Route::group([
     'middleware' => 'api',
@@ -22,5 +25,18 @@ Route::group([
     Route::post('/admin/login', [AdminController::class, 'login']);
     Route::post('/admin/register', [AdminController::class, 'register']);
 });
-
 Route::post('/admin/kiem-tra-chia-khoa', [AdminController::class, 'kiemTraChiaKhoa']);
+
+//dai-ly
+Route::post('/admin/them-moi-dai-ly', [DaiLyController::class, 'store']);
+Route::get('/admin/data-dai-ly', [DaiLyController::class, 'getData']);
+Route::post('/admin/update-dai-ly', [DaiLyController::class, 'update']);
+Route::post('/admin/delete-dai-ly', [DaiLyController::class, 'destroy']);
+
+//NhapKhoSanPham
+Route::get('/admin/nhap-kho/get-data', [NhapKhoSanPhamController::class, 'getData']);
+
+
+//SanPham
+Route::post('/admin/nhap-kho-san-pham', [SanPhamController::class, 'store']);
+Route::get('/admin/san-pham/get-data', [SanPhamController::class, 'dataSanPham']);

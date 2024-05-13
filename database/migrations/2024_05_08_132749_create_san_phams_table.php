@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('tieu_de');
             $table->string('thumbnail');
             $table->string('slug_san_pham');
-            $table->integer('gia_ban');
-            $table->integer('gia_khuyen_mai');
+            $table->string('gia_ban');
+            $table->string('gia_khuyen_mai');
             $table->string('mo_ta');
+            $table->integer('id_dai_ly');
             $table->integer('id_danh_muc');
             $table->timestamps();
         });
