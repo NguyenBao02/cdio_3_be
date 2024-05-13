@@ -33,3 +33,7 @@ Route::group([
 
 Route::post('/admin/kiem-tra-chia-khoa', [AdminController::class, 'kiemTraChiaKhoa']);
 Route::post('/khach-hang/kiem-tra-chia-khoa', [KhachHangControllerController::class, 'kiemTraChiaKhoa']);
+
+Route::get('/admin/danh-sach-flash-sale/data', [SanPhamController::class, 'dataFS']);
+Route::get('/admin/danh-sach-best-selling/data', [SanPhamController::class, 'dataBS']);
+Route::get('/admin/danh-sach/data', [SanPhamController::class, 'dataSanPham']);

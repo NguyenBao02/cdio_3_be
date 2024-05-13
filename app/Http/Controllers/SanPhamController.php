@@ -60,4 +60,46 @@ class SanPhamController extends Controller
             ]);
         }
     }
+
+    public function dataFS()
+    {
+        $data = SanPham::select('san_phams.*')
+            ->orderBy('gia_ban')
+            ->LIMIT(6)
+            ->get();
+
+        if ($data) {
+            return response()->json([
+                'status'    =>   true,
+                'data'      =>   $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>   false,
+                'message'   =>   'Trang Này Chưa Có Dữ Liệu',
+            ]);
+        }
+    }
+
+    public function dataBS()
+    {
+        $data = SanPham::select('san_phams.*')
+            ->orderBy('gia_ban', 'desc')
+            ->LIMIT(6)
+            ->get();
+
+        // $data = SanPham::get();
+
+        if ($data) {
+            return response()->json([
+                'status'    =>   true,
+                'data'      =>   $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>   false,
+                'message'   =>   'Trang Này Chưa Có Dữ Liệu',
+            ]);
+        }
+    }
 }
