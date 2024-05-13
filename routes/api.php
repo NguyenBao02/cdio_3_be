@@ -26,6 +26,10 @@ Route::group([
 ], function ($router) {
     Route::post('/admin/login', [AdminController::class, 'login']);
     Route::post('/admin/register', [AdminController::class, 'register']);
+    Route::post('/khachhang/login', [KhachHangControllerController::class, 'login']);
+    Route::post('/khachhang/register', [KhachHangControllerController::class, 'register']);
+    Route::post('/khachhang/kich-hoat-tai-khoan', [KhachHangControllerController::class, 'kichHoatTaiKhoan']);
 });
 
 Route::post('/admin/kiem-tra-chia-khoa', [AdminController::class, 'kiemTraChiaKhoa']);
+Route::post('/khach-hang/kiem-tra-chia-khoa', [KhachHangControllerController::class, 'kiemTraChiaKhoa']);

@@ -43,7 +43,7 @@ class KhachHangControllerController extends Controller
         } else {
             $user = KhachHangController::where('email', $request->email)->first();
 
-            if($user->tinh_trang) {
+            if ($user->tinh_trang) {
                 return response()->json([
                     'status'        => 1,
                     'message'       => 'Đăng Nhập Thành Công',
@@ -60,7 +60,7 @@ class KhachHangControllerController extends Controller
         }
     }
 
-   
+
 
     public function kiemTraChiaKhoa(Request $request)
     {
