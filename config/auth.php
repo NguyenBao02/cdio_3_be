@@ -26,7 +26,7 @@ return [
     |--------------------------------------------------------------------------
     | Authentication Guards
     |--------------------------------------------------------------------------
-    |
+    |-
     | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
     | here which uses session storage and the Eloquent user provider.
@@ -52,6 +52,10 @@ return [
         //     'driver' => 'jwt',
         //     'provider' => 'users',
         // ],
+        'khach_hang' => [
+            'driver' => 'jwt',
+            'provider' => 'khach_hangs',
+        ],
     ],
 
     /*
@@ -80,6 +84,10 @@ return [
         //     'driver' => 'eloquent',
         //     'model' => App\Models\User::class,
         // ],
+        'khach_hangs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\KhachHangController::class,
+        ],
     ],
 
     /*
