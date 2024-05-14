@@ -34,6 +34,18 @@ Route::group([
 Route::post('/admin/kiem-tra-chia-khoa', [AdminController::class, 'kiemTraChiaKhoa']);
 Route::post('/khach-hang/kiem-tra-chia-khoa', [KhachHangControllerController::class, 'kiemTraChiaKhoa']);
 
+
+//san pham
 Route::get('/admin/danh-sach-flash-sale/data', [SanPhamController::class, 'dataFS']);
 Route::get('/admin/danh-sach-best-selling/data', [SanPhamController::class, 'dataBS']);
+Route::post('/admin/nhap-kho-san-pham', [SanPhamController::class, 'store']);
 Route::get('/admin/danh-sach/data', [SanPhamController::class, 'dataSanPham']);
+
+//Dai Ly
+Route::post('/admin/them-moi-dai-ly', [DaiLyController::class, 'store']);
+Route::get('/admin/data-dai-ly', [DaiLyController::class, 'getData']);
+Route::post('/admin/update-dai-ly', [DaiLyController::class, 'update']);
+Route::post('/admin/delete-dai-ly', [DaiLyController::class, 'destroy']);
+
+//Nhap kho
+Route::get('/admin/nhap-kho/get-data', [NhapKhoSanPhamController::class, 'getData']);
