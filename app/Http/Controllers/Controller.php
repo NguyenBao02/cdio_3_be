@@ -22,7 +22,7 @@ class Controller extends BaseController
     }
     public function isUserKhachHang()
     {
-        $user = auth()->user();
+        $user = auth('khach_hang')->user();
 
         if ($user instanceof \App\Models\KhachHangController) {
             return $user;

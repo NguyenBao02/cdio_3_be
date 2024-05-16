@@ -11,7 +11,7 @@ class KhachHangControllerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'kiemTraChiaKhoa']]);
     }
 
     public function register(Request $request)
@@ -59,8 +59,6 @@ class KhachHangControllerController extends Controller
             }
         }
     }
-
-
 
     public function kiemTraChiaKhoa(Request $request)
     {

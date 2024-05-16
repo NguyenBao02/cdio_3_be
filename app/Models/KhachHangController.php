@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class KhachHangController extends Authenticatable implements JWTSubject
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'khach_hangs';
 

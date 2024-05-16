@@ -102,4 +102,22 @@ class SanPhamController extends Controller
             ]);
         }
     }
+
+    public function dataChiTiet($id)
+    {
+
+        $data = SanPham::where('id', $id)->first();
+
+        if ($data) {
+            return response()->json([
+                'status'    =>   true,
+                'data'      =>   $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>   false,
+                'message'   =>   'Trang Này Chưa Có Dữ Liệu',
+            ]);
+        }
+    }
 }
