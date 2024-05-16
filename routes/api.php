@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChiTietDonHangController;
 use App\Http\Controllers\DaiLyController;
 use App\Http\Controllers\DanhmucController;
+use App\Http\Controllers\DiaChiController;
 use App\Http\Controllers\KhachHangControllerController;
 use App\Models\KhachHangController;
 use App\Http\Controllers\NhapKhoSanPhamController;
@@ -32,9 +33,15 @@ Route::group([
     Route::post('/khachhang/kich-hoat-tai-khoan', [KhachHangControllerController::class, 'kichHoatTaiKhoan']);
 });
 
+//Khach hang
 Route::post('/admin/kiem-tra-chia-khoa', [AdminController::class, 'kiemTraChiaKhoa']);
 Route::post('/khach-hang/kiem-tra-chia-khoa', [KhachHangControllerController::class, 'kiemTraChiaKhoa']);
-
+Route::post('/khach-hang/check-login', [KhachHangControllerController::class, 'checkLogin']);
+Route::get('/khach-hang/thong-tin', [KhachHangControllerController::class, 'thongTin']);
+Route::get('/admin/khach-hang/data', [KhachHangControllerController::class, 'getData']);
+Route::post('/khach-hang/update-thong-tin', [KhachHangControllerController::class, 'updateThongTin']);
+Route::post('/khach-hang/update-mat-khau', [KhachHangControllerController::class, 'updateMatKhau']);
+Route::post('/admin/khach-hang/change-status', [KhachHangControllerController::class, 'changeStatus']);
 
 //san pham
 Route::get('/admin/danh-sach-flash-sale/data', [SanPhamController::class, 'dataFS']);
@@ -57,3 +64,10 @@ Route::post('/them-vao-gio-hang', [ChiTietDonHangController::class, 'themVaoGioH
 Route::get('/khach-hang/data-gio-hang', [ChiTietDonHangController::class, 'dataGioHang']);
 Route::post('/khach-hang/update-gio-hang', [ChiTietDonHangController::class, 'updateGioHang']);
 Route::post('khach-hang/xoa-gio-hang', [ChiTietDonHangController::class, 'xoaGioHang']);
+
+
+//Dia Chi
+Route::post('/khach-hang/dia-chi/create', [DiaChiController::class, 'store']);
+Route::get('/khach-hang/dia-chi/data', [DiaChiController::class, 'data']);
+Route::post('/khach-hang/dia-chi/update', [DiaChiController::class, 'update']);
+Route::post('/khach-hang/dia-chi/delete', [DiaChiController::class, 'destroy']);

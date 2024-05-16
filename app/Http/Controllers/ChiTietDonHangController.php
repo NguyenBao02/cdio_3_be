@@ -44,7 +44,7 @@ class ChiTietDonHangController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => "Có lỗi xảy ra!"
+                'message' => "Bạn cần phải đăng nhập tài khoản!"
             ]);
         }
     }

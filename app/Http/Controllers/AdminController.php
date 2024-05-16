@@ -56,17 +56,16 @@ class AdminController extends Controller
     public function kiemTraChiaKhoa(Request $request)
     {
         $check  = $this->isUserAdmin();
-        // if ($check) {
-        //     return response()->json([
-        //         'status'   =>   true,
-        //         'message'  =>   'Đăng Nhập Thành Công!',
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'status'   =>   false,
-        //         'message'  =>   'Bạn chưa đăng nhập tài khoản!',
-        //     ]);
-        // }
-        return response()->json($request->all());
+        if ($check) {
+            return response()->json([
+                'status'   =>   true,
+                'message'  =>   'Đăng Nhập Thành Công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'   =>   false,
+                'message'  =>   'Bạn chưa đăng nhập tài khoản!',
+            ]);
+        }
     }
 }
